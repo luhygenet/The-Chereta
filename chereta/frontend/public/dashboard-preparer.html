@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparer Dashboard</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" href="http://localhost:3000/frontend/public/styles.css">
+    <style>
+        /* CSS styles for card layout and header */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .card-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            list-style: none;
+            padding: 0;
+            margin: 0 -10px; /* Compensate for margin added by cards */
+        }
+
+        .card {
+            flex: 0 0 calc(33.33% - 20px); /* Adjust width for three cards in a row */
+            margin: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            overflow: hidden; /* Ensure image does not overflow */
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .card-content {
+            padding: 10px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Styles for the header */
+        .header {
+            background-color: #2F2A85;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; /* Smaller padding */
+            margin-bottom: 20px; /* Space below header */
+            color: white;
+        }
+
+        .header ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .header ul li {
+            margin-right: 10px; /* Smaller margin */
+            font-size: 12px; /* Smaller font size */
+        }
+
+        .header ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .header ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .header img {
+            height: 30px; /* Adjust height of logo */
+        }
+
+        .header .back {
+            margin-right: 20px; /* Adjust back link margin */
+        }
+
+        .header .profile-icon {
+            width: 30px; /* Adjust width of profile icon */
+            height: 30px; /* Adjust height of profile icon */
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Styles for the "Create New" button */
+        .create-new-button {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .create-new-button button {
+            background-color: #2F2A85;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-new-button button:hover {
+            background-color: #493e99;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <ul>
+                <li class="back"><a href="#"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+                <li><img src="../asset/Vector (1).png" alt=""></li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+                <li><a href="#"><img class="profile-icon" src="../asset/profile-icon.png" alt="Profile"></a></li>
+            </ul>
+        </div> 
+    </header>
+
+    <h1>Preparer Dashboard</h1>
+
+    <!-- Button to Create New Tender -->
+    <div class="create-new-button">
+        <button onclick="redirectToCreateTender()">Create New</button>
+    </div>
+
+    <!-- Open Tenders Section -->
+    <div id="open-tenders">
+        <h2>Open Tenders</h2>
+        <ul id="open-tenders-list" class="card-list"></ul>
+    </div>
+
+    <!-- Closed Tenders Section -->
+    <div id="closed-tenders">
+        <h2>Closed Tenders</h2>
+        <ul id="closed-tenders-list" class="card-list"></ul>
+    </div>
+
+    <script src="../src/dashboard-preparer.js"></script>
+    <script>
+        function redirectToCreateTender() {
+            window.location.href = "create-tender.html";
+        }
+    </script>
+</body>
+</html>

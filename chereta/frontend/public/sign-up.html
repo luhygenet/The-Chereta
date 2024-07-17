@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Reset and basic styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0ead6; /* Eggshell background color */
+            font-family: Arial, sans-serif;
+            font-size: 14px; /* Smaller font size */
+        }
+
+        .header {
+            background-color: #2F2A85;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; /* Smaller padding */
+        }
+
+        .header ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .header ul li {
+            margin-right: 10px; /* Smaller margin */
+            font-size: 12px; /* Smaller font size */
+        }
+
+        .header ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .login-container {
+            display: flex;
+            background-color: #f0ead6; /* Eggshell background color */
+            padding: 20px; /* Padding for layout */
+            overflow: hidden; /* Ensure contents do not overflow */
+            width: 80%; /* Adjust width as needed */
+            margin: 20px auto; /* Center on the page */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+        }
+
+        .form-section {
+            flex: 1; /* Take up remaining space */
+            padding: 0 20px; /* Add padding inside the form section */
+        }
+
+        .image-section {
+            flex: 1; /* Take up remaining space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Ensure image is contained within its section */
+        }
+
+        .image-section img {
+            max-width: 100%; /* Ensure image does not exceed container width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Style for form inputs */
+        input[type="text"],
+        input[type="password"],
+        select,
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px; /* Smaller font size */
+            border: 1px solid #7124a8;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #7124a8; /* Dark purple background */
+            color: white; /* White text color */
+            border: 1px solid #210138; /* Black border */
+            padding: 10px 20px; /* Adjust padding as needed */
+            font-size: 14px; /* Smaller font size */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #210138;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
+            </ul>
+        </div> 
+    </header>
+
+    <div class="login-container">
+        <div class="form-section">
+            <h2>Sign Up</h2>
+            <form id="sign-up-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="role">Role:</label>
+                <select id="role" name="role" required>
+                    <option value="preparer">Preparer</option>
+                    <option value="participant">Participant</option>
+                </select>
+                <div id="additional-fields"></div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+        <div class="image-section">
+            <img src="../asset/che2.jpg" alt="Background Image">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('role').addEventListener('change', function() {
+            const role = this.value;
+            const additionalFields = document.getElementById('additional-fields');
+            additionalFields.innerHTML = '';
+
+            if (role === 'preparer') {
+                additionalFields.innerHTML = `
+                    <label for="license">License:</label>
+                    <input type="text" id="license" name="license" required>
+                `;
+            } else if (role === 'participant') {
+                additionalFields.innerHTML = `
+                    <label for="preference">Preference:</label>
+                    <input type="text" id="preference" name="preference" required>
+                `;
+            }
+        });
+
+        document.getElementById('sign-up-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {
+                username: formData.get('username'),
+                password: formData.get('password'),
+                role: formData.get('role'),
+            };
+
+            if (data.role === 'preparer') {
+                data.license = formData.get('license');
+            } else if (data.role === 'participant') {
+                data.preference = formData.get('preference');
+            }
+
+            const response = await fetch('http://localhost:3000/users', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                alert('Sign up successful!');
+                window.location.href = "login.html"; // Redirect to login page
+            } else {
+                alert('Sign up failed!');
+            }
+        });
+    </script>
+</body>
+</html>

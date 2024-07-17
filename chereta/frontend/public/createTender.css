@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.5;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+header {
+    background-color: #2F2A85;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 14% 1% 3%;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+}
+
+li {
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.back {
+    margin-right: auto;
+}
+
+.forms {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.done {
+    max-width: 50%;
+    max-height: 80%;
+    margin-right: 10%;
+}
+
+.form-container {
+    max-width: 400px;
+    width: 60%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #b9acc8;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.lined-textarea {
+    position: relative;
+    width: 100%;
+}
+
+.lined-textarea textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 2px solid #b9acc8;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.creating-document {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.document {
+    display: flex;
+    align-items: center;
+}
+
+.document p {
+    margin-right: 20px;
+}
+
+#attachment {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.form-group.submitting {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.form-group.submitting button {
+    background-color: #746EE0;
+    color: black;
+    font-size: 16px;
+    border: 2px solid #8360ab;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.form-group.submitting button:hover {
+    background-color: #706add;
+    border-color: #5f56a1;
+    color: white;
+}

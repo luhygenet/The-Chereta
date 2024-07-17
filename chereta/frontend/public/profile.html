@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your custom CSS file -->
+    <style>
+        /* Additional styles specific to User Profile */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            padding: 20px;
+        }
+
+        .profile {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .profile h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .profile ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile ul li {
+            margin-bottom: 10px;
+        }
+
+        .profile label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .logout-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .logout-button button {
+            background-color: #FF6347; /* Tomato red */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-button button:hover {
+            background-color: #FF4500; /* Orange Red */
+        }
+    </style>
+</head>
+<body>
+    <div class="profile">
+        <img src="path_to_profile_image.jpg" alt="Profile Picture">
+        <h2>User Profile</h2>
+        <ul>
+            <li>
+                <label>Name:</label>
+                <span id="profile-name">John Doe</span> <!-- Replace with dynamic content -->
+            </li>
+            <li>
+                <label>Email:</label>
+                <span id="profile-email">john.doe@example.com</span> <!-- Replace with dynamic content -->
+            </li>
+            <li>
+                <label>Role:</label>
+                <span id="profile-role">Participant</span> <!-- Replace with dynamic content -->
+            </li>
+            <!-- Add more profile information as needed -->
+        </ul>
+        <div class="logout-button">
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script src="profile.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Reset and basic styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0ead6; /* Eggshell background color */
+            font-family: Arial, sans-serif;
+            font-size: 14px; /* Smaller font size */
+        }
+
+        .header {
+            background-color: #2F2A85;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px; /* Smaller padding */
+        }
+
+        .header ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .header ul li {
+            margin-right: 10px; /* Smaller margin */
+            font-size: 12px; /* Smaller font size */
+        }
+
+        .header ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .login-container {
+            display: flex;
+            
+            background-color:  #f0ead6; /* White background for the login container */
+            padding: 20px; /* Box shadow for depth */
+            overflow: hidden; /* Ensure contents do not overflow */
+            width: 80%; /* Adjust width as needed */
+            margin-top: 20px; /* Spacing from header */
+        }
+
+        .form-section {
+            flex: 1; /* Take up remaining space */
+            padding: 0 20px; /* Add padding inside the form section */
+        }
+
+        .image-section {
+            flex: 1; /* Take up remaining space */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Ensure image is contained within its section */
+        }
+
+        .image-section img {
+            max-width: 100%; /* Ensure image does not exceed container width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        /* Style for form inputs */
+        input[type="text"],
+        input[type="password"],
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 14px; /* Smaller font size */
+            border: 1px solid #7124a8;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #7124a8; /* Dark purple background */
+            color: white; /* White text color */
+            border: 1px solid #210138; /* Black border */
+            padding: 10px 20px; /* Adjust padding as needed */
+            font-size: 14px; /* Smaller font size */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #210138;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div>
+            <ul>
+                <li class="back"><a href="#"><i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
+                <li><img src="../asset/Vector (1).png" alt=""></li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+                <li> <a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a> </li>
+            </ul>
+        </div> 
+    </header>
+
+    <div class="login-container">
+        <div class="form-section">
+            <h2>Please enter your credentials</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <div class="image-section">
+            <img src="../asset/che2.jpg" alt="Background Image">
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('role'); // Optional: Clear any other stored data
+            // Redirect or update UI as needed
+        }
+        
+        // Example: Attach logout function to a logout button
+        document.getElementById('logout-button').addEventListener('click', function() {
+            logout();
+        });
+    </script>
+    <script src="../src/login.js"></script>
+</body>
+</html>
